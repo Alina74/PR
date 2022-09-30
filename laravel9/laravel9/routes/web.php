@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
 Route::get('/login', [\App\Http\Controllers\UserController::class, 'login'])->name('login');
 Route::post('/login', [\App\Http\Controllers\UserController::class, 'loginPost']);
 
@@ -14,7 +15,7 @@ Route::post('/register',[\App\Http\Controllers\UserController::class, 'registerP
 Route::middleware('auth')->group(function (){
     Route::middleware('role:user,admin')->group(function (){
         Route::middleware('role:admin')->group(function (){
-            Route::prefix('/admin')->group(function (){
+            Route::group(['prefix'=>'/admin', 'as'=>'admin.'], function (){
                 Route::resource('/product', \App\Http\Controllers\ProductController::class);
             });
         });

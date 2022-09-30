@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Мой интернет магазин</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
-    <script src="/assets/js/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
@@ -38,12 +38,12 @@
                     </li>
                     @if(\Illuminate\Support\Facades\Auth::user()->role=='admin')
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                 Администрирование
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Добавить товар</a></li>
-                                <li><a class="dropdown-item" href="#">Все товары</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{{route('admin.product.create')}}">Добавить товар</a></li>
+                                <li><a class="dropdown-item" href="{{route('admin.product.index')}}">Все товары</a></li>
                                 <li><a class="dropdown-item" href="#">Просмотр заказов</a></li>
                                 <li><a class="dropdown-item" href="#">Пользователи</a></li>
                             </ul>
